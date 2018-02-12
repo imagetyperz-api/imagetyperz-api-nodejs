@@ -6,6 +6,8 @@ ImagetyperzAPI is a super easy to use bypass captcha API wrapper for imagetyperz
 ## Installation
 
 	npm install imagetyperz-api
+or
+
 	git clone https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 
 ## How to use?
