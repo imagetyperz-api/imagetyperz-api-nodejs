@@ -1,0 +1,22 @@
+{
+  "name": "imagetyperz-api",
+  "version": "1.0.6",
+  "description": "ImagetyperzAPI is a super easy to use bypass captcha API wrapper for imagetyperz.com captcha service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "captcha",
+    "bypasscaptcha",
+    "decaptcher",
+    "decaptcha"
+  ],
+  "author": "imagetyperz-api",
+  "license": "MIT",
+  "dependencies": {
+    "file-base64": "^1.0.0",
+    "q": "^1.5.1",
+    "requestify": "^0.2.5"
+  }
+}
