@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 // require library
 var imagetyperzapi = require('../');
 
