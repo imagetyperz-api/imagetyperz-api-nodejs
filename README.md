@@ -1,5 +1,5 @@
-imagetyperz-api - Imagetyperz API wrapper
-=========================================
+imagetyperz-api - Imagetyperz nodejs API wrapper
+================================================
 
 ImagetyperzAPI is a super easy to use bypass captcha API wrapper for imagetyperz.com captcha service
 
