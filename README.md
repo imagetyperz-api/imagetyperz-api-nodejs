@@ -106,3 +106,6 @@ imagetyperzapi.set_captcha_bad('6544564');
 
 ## Examples
 Check the example/example.js
+
+## More information
+More details about the server-side API can be found [here](http://imagetyperz.com)
