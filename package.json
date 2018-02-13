@@ -10,7 +10,10 @@
     "captcha",
     "bypasscaptcha",
     "decaptcher",
-    "decaptcha"
+    "decaptcha",
+    "2captcha",
+    "deathbycaptcha",
+    "anticaptcha"
   ],
   "author": "imagetyperz-api",
   "license": "MIT",
