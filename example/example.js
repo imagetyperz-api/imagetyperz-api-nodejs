@@ -13,11 +13,11 @@ const SITEKEY = 'YOUR_SITEKEY';
 
 // authenticate with accesskey
 // ----------------------------
-//imagetyperzapi.set_access_key(ACCESS_KEY);
+imagetyperzapi.set_access_key(ACCESS_KEY);
 
 // authenticate with username and password - legacy
 // accesskey auth is preferred
-// imagetyperzapi.set_user_password('YOUR_USERNAME', 'YOUR_PASSWORD');
+//imagetyperzapi.set_user_password('your_username', 'your_password');
 // first, get account balance
 // --------------------------
 imagetyperzapi.account_balance().then(function (balance) {
