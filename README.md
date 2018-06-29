@@ -55,12 +55,24 @@ imagetyperzapi.solve_captcha('http://abc.com/your_captcha.jpg').then(function (r
 For recaptcha submission there are two things that are required.
 - page_url
 - site_key
+- type - can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
+- v3_min_score - minimum score to target for v3 recaptcha `- optional`
+- v3_action - action parameter to use for v3 recaptcha `- optional`
+- proxy - proxy to use when solving recaptcha, eg. `12.34.56.78:1234` or `12.34.56.78:1234:user:password` `- optional`
+- user_agent - useragent to use when solve recaptcha `- optional` 
+
 ``` javascript
-imagetyperzapi.submit_recaptcha('http://abc.com', '6fbereggr_fdsff3345ff12d').then(function (captchaid) {
-    console.log('Captcha ID:', captchaid);   
-})
+var recaptcha_params = {};
+recaptcha_params.page_url = 'example.com';
+recaptcha_params.sitekey = 'sitekey_here';
+recaptcha_params.type = 3;                       // optional, defaults to 1
+recaptcha_params.v3_min_score = 0.3;             // min score to target when solving v3 - optional
+recaptcha_params.v3_action = 'homepage';         // action to use when solving v3 - optional
+recaptcha_params.proxy = '126.45.34.53:123';     // HTTP proxy - optional
+recaptcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+return imagetyperzapi.submit_recaptcha(recaptcha_params);       // returns a promise
 ```
-This method returns a captchaID. This ID will be used next, to retrieve the g-response, once workers have 
+This method returns a captchaID (promise). This ID will be used next, to retrieve the g-response, once workers have 
 completed the captcha. This takes somewhere between 10-80 seconds.
 
 **Retrieve captcha response**
@@ -75,7 +87,8 @@ imagetyperzapi.retrieve_recaptcha('6544564').then(function (response) {
 })
 ```
 
-##Other methods/variables
+Other methods
+--
 
 **- set_affiliate_id(affiliate_id)**
 
@@ -86,15 +99,15 @@ for authentication.
 imagetyperzapi.set_affiliate_id('123456789');
 ```
 
-**- submit_recaptcha(page_url, sitekey, proxy, proxy_type)**
+**- was_proxy_used(recaptcha_id)**
 
-The recaptcha submission method accepts two optional arguments, proxy and proxy_type.
-This are used in case you want the recaptcha to be solved using a proxy. The format for **proxy** 
-argument is *IP:PORT* (eg. 12.34.56.78:1234 or user:pass@12.34.56.78:1234 [proxy with auth]) and currently 
-supported proxy_type is HTTP (only)
+In case you submitted the recaptcha with proxy, you can check the status of the proxy, if it was used or not,
+and if not, what the reason was with the following:
+
 ``` javascript
-imagetyperzapi.submit_recaptcha('http://abc.com', '6fbereggr_fdsff3345ff12d', '12.34.56.78:1234', 'HTTP');
+imagetyperzapi.was_proxy_used(recaptcha_id)
 ```
+
 
 **- set_captcha_bad(captcha_id)**
 
