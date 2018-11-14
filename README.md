@@ -40,8 +40,9 @@ imagetyperzapi.account_balance().then(function (balance) {
 **Submit image captcha**
 
 ``` javascript
-imagetyperzapi.solve_captcha('captcha.jpg').then(function (response) {
-    console.log('Captcha text:', response);    
+imagetyperzapi.solve_captcha('captcha.jpg').then(function (data) {
+    console.log('Captcha ID:', data.id);
+    console.log('Captcha text:', data.text);
 })
 ```
 **Works with both image file and URL**
