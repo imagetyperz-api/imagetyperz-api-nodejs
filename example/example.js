@@ -33,7 +33,8 @@ imagetyperzapi.account_balance().then(function (balance) {
     console.log('Waiting for captcha to be solved ...');
     return imagetyperzapi.solve_captcha('captcha.jpg');     // solve_captcha(url, case_sensitive = 1 [optional])
 }).then(function (data) {
-    console.log('Captcha text:', data);    // print captcha text and submit recaptcha
+    console.log('Captcha ID: ' + data.id);
+    console.log('Captcha text:', data.text);    // print captcha text and submit recaptcha
     // submit recaptcha details
     // --------------------------------------
     return imagetyperzapi.submit_recaptcha(recaptcha_params);

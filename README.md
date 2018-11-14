@@ -46,8 +46,9 @@ imagetyperzapi.solve_captcha('captcha.jpg').then(function (response) {
 ```
 **Works with both image file and URL**
 ``` javascript
-imagetyperzapi.solve_captcha('http://abc.com/your_captcha.jpg').then(function (response) {
-    console.log('Captcha text:', response);    
+imagetyperzapi.solve_captcha('http://abc.com/your_captcha.jpg').then(function (data) {
+    console.log('Captcha ID:', data.id);
+    console.log('Captcha text:', data.text);
 })
 ```
 **Submit recaptcha details**
