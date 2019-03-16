@@ -7,14 +7,22 @@ var imagetyperzapi = require('../');
 const ACCESS_KEY = 'access_token_here';
 
 // recaptcha parameters
-var recaptcha_params = {};
-recaptcha_params.page_url = 'example.com';
-recaptcha_params.sitekey = 'sitekey_here';
+// var recaptcha_params = {};
+// recaptcha_params.page_url = 'example.com';
+// recaptcha_params.sitekey = 'sitekey_here';
 // recaptcha_params.type = 3;                       // optional, defaults to 1
 // recaptcha_params.v3_min_score = 0.3;             // min score to target when solving v3 - optional
 // recaptcha_params.v3_action = 'homepage';         // action to use when solving v3 - optional
 // recaptcha_params.proxy = '126.45.34.53:123';     // optional
 // recaptcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+
+// geetest parameters
+var geetest_params = {};
+geetest_params.domain = 'example.com';
+geetest_params.challenge = 'example.com';
+geetest_params.gt = 'sitekey_here';
+//geetest_params.proxy = '126.45.34.53:123';     // optional
+//geetest_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
 
 // authenticate with accesskey
 // ----------------------------
@@ -28,8 +36,8 @@ var recaptcha_id = undefined;
 // --------------------------
 imagetyperzapi.account_balance().then(function (balance) {
     console.log('Balance:', balance);   // print balance gathered
-    // solve image captcha
-    // ------------------------------------------------
+    //solve image captcha
+    //------------------------------------------------
     console.log('Waiting for captcha to be solved ...');
     return imagetyperzapi.solve_captcha('captcha.jpg');     // solve_captcha(url, case_sensitive = 1 [optional])
 }).then(function (data) {
@@ -42,11 +50,20 @@ imagetyperzapi.account_balance().then(function (balance) {
     recaptcha_id = id;      // save to use with was_proxy_used(id) method
     console.log('Waiting for recaptcha #' + recaptcha_id + ' to be solved ...');
     return imagetyperzapi.retrieve_recaptcha(recaptcha_id);     // get the g-response using the ID
-}).then(function(gresponse){
+}).then(function(gresponse) {
     // we have the gresponse at this point
     // -------------------------------------------
     console.log('Recaptcha response:', gresponse);
-})/*.then(function(){
+})
+    // submit geetest captcha
+    // ----------------------
+    /*return imagetyperzapi.submit_geetest(geetest_params);
+}).then(function (geetest_id){
+    console.log('Waiting for geetest #' + geetest_id + ' to be solved ...');
+    return imagetyperzapi.retrieve_geetest(geetest_id);
+}).then(function (geetest_response){
+    console.log('Geetest response', geetest_response);
+}).then(function(){
     return imagetyperzapi.was_proxy_used(recaptcha_id); // check if proxy was used
 }).then(function(was_used){
     console.log(was_used);

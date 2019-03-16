@@ -37,7 +37,9 @@ imagetyperzapi.account_balance().then(function (balance) {
 })
 ```
 
-**Submit image captcha**
+## Image captcha
+
+### Submit image captcha
 
 ``` javascript
 imagetyperzapi.solve_captcha('captcha.jpg').then(function (data) {
@@ -52,7 +54,10 @@ imagetyperzapi.solve_captcha('http://abc.com/your_captcha.jpg').then(function (d
     console.log('Captcha text:', data.text);
 })
 ```
-**Submit recaptcha details**
+
+## reCAPTCHA
+
+### Submit reCAPTCHA details
 
 For recaptcha submission there are two things that are required.
 - page_url
@@ -77,7 +82,7 @@ return imagetyperzapi.submit_recaptcha(recaptcha_params);       // returns a pro
 This method returns a captchaID (promise). This ID will be used next, to retrieve the g-response, once workers have 
 completed the captcha. This takes somewhere between 10-80 seconds.
 
-**Retrieve captcha response**
+### Retrieve reCAPTCHA response
 
 Once you have the captchaID, you retrieve the response. Normally, you have to re-check every 5 seconds to see if
 the captcha is completed or still in progress. The library handles all this for you, all you have to do is call the 
@@ -89,8 +94,47 @@ imagetyperzapi.retrieve_recaptcha('6544564').then(function (response) {
 })
 ```
 
-Other methods
---
+## GeeTest
+
+
+GeeTest is a captcha that requires 3 parameters to be solved:
+- domain
+- challenge
+- gt
+
+The response of this captcha after completion are 3 codes:
+- challenge
+- validate
+- seccode
+
+### Submit GeeTest
+```javascript
+geetest_params = {
+        'domain' :'domain_here',
+        'challenge': 'challenge_here',
+        'gt': 'gt_here',
+        'proxy': '126.45.34.53:345',    # or 126.45.34.53:123:joe:password, optional
+        'user_agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'    # optional
+};
+return imagetyperzapi.submit_geetest(geetest_params);
+```
+
+Just like reCAPTCHA, you'll receive a captchaID.
+Using the ID, you'll be able to retrieve 3 codes after completion.
+
+Optionally, you can send proxy and user_agent along.
+
+### Retrieve GeeTest codes
+```javascript
+imagetyperzapi.retrieve_geetest(geetest_id)
+.then(function (geetest_response){
+   console.log('Geetest response', geetest_response);
+})
+```
+
+Response will be an (JSON) object that looks like this: `{'challenge': '...', 'validate': '...', 'seccode': '...'}`
+
+## Other methods
 
 **- set_affiliate_id(affiliate_id)**
 
