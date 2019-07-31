@@ -6,9 +6,18 @@ var imagetyperzapi = require('../');
 // check dashboard for accesskey
 const ACCESS_KEY = 'access_token_here';
 
+// image, optional parameters
+var image_params = {};
+// image_params.iscase = 'true';         // case sensitive captcha
+// image_params.isphrase = 'true';       // text contains at least one space (phrase)
+// image_params.ismath = 'true';         // instructs worker that a math captcha has to be solved
+// image_params.alphanumeric = '2';      // 1 - digits only, 2 - letters only
+// image_params.minlength = 2;           // captcha text length (minimum)
+// image_params.maxlength = 6;           // captcha text length (maximum)
+
 // recaptcha parameters
-// var recaptcha_params = {};
-// recaptcha_params.page_url = 'example.com';
+var recaptcha_params = {};
+// recaptcha_params.page_url = 'example.com';       // add --capy at the end to make it a capy captcha
 // recaptcha_params.sitekey = 'sitekey_here';
 // recaptcha_params.type = 3;                       // optional, defaults to 1
 // recaptcha_params.v3_min_score = 0.3;             // min score to target when solving v3 - optional
@@ -39,7 +48,7 @@ imagetyperzapi.account_balance().then(function (balance) {
     //solve image captcha
     //------------------------------------------------
     console.log('Waiting for captcha to be solved ...');
-    return imagetyperzapi.solve_captcha('captcha.jpg');     // solve_captcha(url, case_sensitive = 1 [optional])
+    return imagetyperzapi.solve_captcha('captcha.jpg', image_params);
 }).then(function (data) {
     console.log('Captcha ID: ' + data.id);
     console.log('Captcha text:', data.text);    // print captcha text and submit recaptcha
