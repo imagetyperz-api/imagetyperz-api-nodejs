@@ -143,14 +143,30 @@ imagetyperzapi.retrieve_geetest(geetest_id)
 
 Response will be an (JSON) object that looks like this: `{'challenge': '...', 'validate': '...', 'seccode': '...'}`
 
+## Capy & hCaptcha
 
-## Capy
+This are two different captcha types, but both are similar to reCAPTCHA. They require a `pageurl` and `sitekey` for solving. hCaptcha is the newest one.
 
-This captcha requires a `page_url` and `sitekey` in order to be solved by our system.
-Currently, in order to solve a capy captcha, you'll have to use the reCAPTCHA methods and only add `--capy` at the end of the `page_url`.
-Having that up, our system will pick it up as capy. Once workers have solved it, you'll have to use the reCAPTCHA retrieve endpoint, to get the response.
+### IMPORTANT
+For this two captcha types, the reCAPTCHA methods are used (explained above), except that there's one small difference.
 
-**E.g** Original page url - `https://mysite.com`, capy page url `https://mysite.com--capy`
+The `pageurl` parameter should have at the end of it `--capy` added for Capy captcha and `--hcaptcha` for the hCaptcha. This instructs our system it's a capy or hCaptcha. It will be changed in the future, to have it's own endpoints.
+
+For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy` if it's capy or `https://mysite.com--hcaptcha` for hCaptcha. Both require a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA method.
+
+#### Example
+``` javascript
+var p = {};
+p.page_url = 'example.com--capy';		// add --capy or --hcaptcha at the end, to submit capy or hCaptcha
+p.sitekey = 'sitekey_here';
+
+// submit it as recaptcha
+imagetyperzapi.submit_recaptcha(p).then(function (id){
+	return imagetyperzapi.retrieve_recaptcha(id);
+}).then(function (solution){
+	console.log(`Capy response: ${solution}`);
+});
+```
 
 ## Other methods
 

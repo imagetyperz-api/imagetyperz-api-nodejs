@@ -17,7 +17,7 @@ var image_params = {};
 
 // recaptcha parameters
 var recaptcha_params = {};
-// recaptcha_params.page_url = 'example.com';       // add --capy at the end to make it a capy captcha
+// recaptcha_params.page_url = 'example.com';       // add --capy or --hcaptcha at the end, to submit capy or hCaptcha
 // recaptcha_params.sitekey = 'sitekey_here';
 // recaptcha_params.type = 3;                       // optional, defaults to 1
 // recaptcha_params.v3_min_score = 0.3;             // min score to target when solving v3 - optional
