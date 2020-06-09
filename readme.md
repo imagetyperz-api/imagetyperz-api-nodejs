@@ -86,6 +86,7 @@ recaptcha_params.v3_min_score = 0.3;             // min score to target when sol
 recaptcha_params.v3_action = 'homepage';         // action to use when solving v3 - optional
 recaptcha_params.proxy = '126.45.34.53:123';     // HTTP proxy - optional
 recaptcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+recaptcha_params.data_s = 'recaptcha data-s value' // optional
 return imagetyperzapi.submit_recaptcha(recaptcha_params);       // returns a promise
 ```
 This method returns a captchaID (promise). This ID will be used next, to retrieve the g-response, once workers have 

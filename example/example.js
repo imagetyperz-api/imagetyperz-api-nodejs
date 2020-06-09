@@ -24,6 +24,7 @@ var recaptcha_params = {};
 // recaptcha_params.v3_action = 'homepage';         // action to use when solving v3 - optional
 // recaptcha_params.proxy = '126.45.34.53:123';     // optional
 // recaptcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+// recaptcha_params.data_s = 'recaptcha data-s value' // optional
 
 // geetest parameters
 var geetest_params = {};
