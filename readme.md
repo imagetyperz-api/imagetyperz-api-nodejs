@@ -65,12 +65,18 @@ It works with URL instead of image file too, but authentication has to be done u
 For recaptcha submission there are two things that are required.
 - page_url (**required**)
 - site_key (**required**)
-- type - can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
+- type (optional, defaults to 1 if not given)
+    - `1` - v2
+    - `2` - invisible
+    - `3` - v3
+    - `4` - enterprise v2
+    - `5` - enterprise v3
 - v3_min_score - minimum score to target for v3 recaptcha `- optional`
 - v3_action - action parameter to use for v3 recaptcha `- optional`
 - proxy - proxy to use when solving recaptcha, eg. `12.34.56.78:1234` or `12.34.56.78:1234:user:password` `- optional`
 - user_agent - useragent to use when solve recaptcha `- optional` 
 - data-s - extra parameter used in solving recaptcha `- optional`
+- cookie_input - cookies used in solving reCAPTCHA - `- optional`
 
 ```javascript
 var captcha_params = {}
@@ -82,6 +88,7 @@ captcha_params.sitekey = '7LrGJmcUABBAALFtIb_FxC0LXm_GwOLyJAfbbUCL'
 // captcha_params.proxy = '126.45.34.53:123';     // optional
 // captcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
 // captcha_params.data_s = 'recaptcha data-s value' // optional
+// captcha_params.cookie_input = 'a=b;c=d'        // optional
 const captchaID = await imagetyperzapi.submit_recaptcha(captcha_params)
 ```
 ID will be used to retrieve the g-response, once workers have 
