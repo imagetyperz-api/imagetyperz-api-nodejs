@@ -163,6 +163,21 @@ captcha_params.cookie_input = 's_v_web_id:verify_kd6243o_fd449FX_FDGG_1x8E_8NiQ_
 const captchaID = await imagetyperzapi.submit_tiktok(captcha_params)
 ```
 
+### FunCaptcha
+
+Requires page_url, sitekey and s_url (source URL)
+
+```javascript
+var captcha_params = {};
+captcha_params.page_url = 'https://your-site.com';
+captcha_params.sitekey = '11111111-1111-1111-1111-111111111111';
+captcha_params.s_url = 'https://api.arkoselabs.com';
+// captcha_params.data = '{"a": "b"}';            // optional, extra funcaptcha data in JSON format
+// captcha_params.proxy = '126.45.34.53:123';     // optional, or 126.45.34.53:123:joe:password
+// captcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+const captchaID = await imagetyperzapi.submit_funcaptcha(captcha_params)
+```
+
 ## Retrieve response
 
 Regardless of the captcha type (and method) used in submission of the captcha, this method is used
