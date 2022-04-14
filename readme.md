@@ -125,6 +125,32 @@ const captchaID = await imagetyperzapi.submit_geetest(captcha_params)
 
 Optionally, you can send proxy and user_agent along.
 
+### GeeTestV4
+
+GeeTesV4 is a new version of captcha from geetest that requires 2 parameters to be solved:
+
+- domain
+- geetestid (captchaID) - gather this from HTML source of page with captcha, inside the `<script>` tag you'll find a link that looks like this: https://i.imgur.com/XcZd47y.png
+
+The response of this captcha after completion are 5 parameters:
+
+- captcha_id
+- lot_number
+- pass_token
+- gen_time
+- captcha_output
+
+```javascript
+var captcha_params = {};
+captcha_params.domain = 'https://example.com';
+captcha_params.geetestid = '647f5ed2ed8acb4be36784e01556bb71';
+// captcha_params.proxy = '126.45.34.53:123';     // optional
+// captcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+const captchaID = await imagetyperzapi.submit_geetest_v4(captcha_params);
+```
+
+Optionally, you can send proxy and user_agent along.
+
 ### hCaptcha
 
 Requires page_url and sitekey
