@@ -214,6 +214,24 @@ captcha_params.s_url = 'https://api.arkoselabs.com';
 const captchaID = await imagetyperzapi.submit_funcaptcha(captcha_params)
 ```
 
+### Task
+
+Requires template_name, page_url and usually variables
+
+```javascript
+var captcha_params = {};
+captcha_params = {
+  'template_name': 'Login test page',
+  'page_url': 'https://imagetyperz.net/automation/login',
+  'variables': {"username": 'abc', "password": 'paZZW0rd'},
+  // 'proxy': '126.45.34.53:345',   # or 126.45.34.53:123:joe:password
+  // 'user_agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0',    # optional
+}
+// captcha_params.proxy = '126.45.34.53:123';     // optional
+// captcha_params.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0';   // optional
+const captchaID = await imagetyperzapi.submit_task(captcha_params)
+```
+
 ## Retrieve response
 
 Regardless of the captcha type (and method) used in submission of the captcha, this method is used
