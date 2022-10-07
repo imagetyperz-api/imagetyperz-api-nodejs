@@ -26,6 +26,10 @@ async function test_api() {
     // solve captcha
     const captchaID = await imagetyperzapi.submit_task(captcha_params);
     console.log('Waiting for captcha to be solved ...');
+
+    // # send pushVariable - update of variable while task is running (e.g 2FA code)
+    // await imagetyperzapi.task_push_variables(captchaID, {"twofactor_code": "32484"})
+
     const response = await imagetyperzapi.retrieve_response(captchaID)   // wait for response to get solved
     console.log(`Response: ${JSON.stringify(response)}`)
 }

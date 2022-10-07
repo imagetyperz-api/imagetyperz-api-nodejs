@@ -1,6 +1,6 @@
 {
   "name": "imagetyperz-api",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "ImagetyperzAPI is a super easy to use bypass captcha API wrapper for imagetyperz.com captcha service",
   "main": "index.js",
   "scripts": {
