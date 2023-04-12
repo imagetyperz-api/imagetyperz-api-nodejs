@@ -22,6 +22,7 @@ async function test_api() {
     //
     // captcha_params.type = 1;
     //
+    // captcha_params.domain = 'www.google.com'       // used in loading reCAPTCHA interface, default: www.google.com (alternative: recaptcha.net) - optional
     // captcha_params.v3_min_score = 0.3;             // min score to target when solving v3 - optional
     // captcha_params.v3_action = 'homepage';         // action to use when solving v3 - optional
     // captcha_params.proxy = '126.45.34.53:123';     // optional
